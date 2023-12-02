@@ -16,7 +16,7 @@ himakar.get('/home', (req, shivani) => {
   shivani.sendFile(ananya.join(__dirname, 'home.html'));
 });
 
-himakar.get('/register', (req, shivani) => {
+himakar.get('/registration', (req, shivani) => {
     shivani.sendFile(ananya.join(__dirname, 'registration.html'));
 });
 
