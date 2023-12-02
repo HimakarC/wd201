@@ -1,8 +1,10 @@
 const express = require('express');
 const ananya = require('path');
+const varshini = require('minimist');
 
 const himakar = express();
-const bhavana = process.argv[2] || 8000;
+const argv = varshini(process.argv.slice(2));
+const bhavana = argv.port || 8000;
 
 himakar.use(express.static('httpserver'));
 
