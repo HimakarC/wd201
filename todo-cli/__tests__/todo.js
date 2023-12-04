@@ -47,6 +47,7 @@ describe("Supriya the reason", () => {
   {
     expect(all.length).toBe(3);
     const supriya = dueToday();
+    console.log(supriya);
     expect(supriya.length).toBe(1);
   });
 
