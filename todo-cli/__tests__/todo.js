@@ -33,4 +33,13 @@ describe("TodoList Test Suite", () => {
   test("return a list of todos due later", () => {
     expect(todoList().dueLater()).toEqual([]);
   });
+  test("return a list of overdue2 todos", () => {
+    expect(todoList().overdue()).toEqual([]);
+  });
+  test("return a list of todos due today2", () => {
+    expect(todoList().dueToday()).toEqual([]);
+  });
+  test("return a list of todos due later2", () => {
+    expect(todoList().dueLater()).toEqual([]);
+  });
 });
