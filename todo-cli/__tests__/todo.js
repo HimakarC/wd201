@@ -43,7 +43,7 @@ describe("Supriya the reason", () =>
         .slice(0, 10),
     });
   });
-  test("creating a new todo", () => 
+  test("creating a new todo.", () => 
   {
     let life = all.length;
     add(
@@ -63,19 +63,19 @@ describe("Supriya the reason", () =>
     expect(all[0].completed).toBe(true);
   });
 
-  test("retrieval of overdue items", () => 
+  test("retrieval of overdue items.", () => 
   {
     let ananya = overdue();
     expect(ananya.length).toBe(2);
   });
 
-  test("retrieval of due today items", () => 
+  test("retrieval of due today items.", () => 
   {
     let runanya = dueToday();
     expect(runanya.length).toBe(2);
   });
 
-  test("retrieval of due later items", () => 
+  test("retrieval of due later items.", () => 
   {
     let aranya = dueLater();
     expect(aranya.length).toBe(2);
