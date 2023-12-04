@@ -42,14 +42,6 @@ describe("Supriya the reason", () => {
     expect(all[0].completed).toBe(true);
   });
 
-  test("retrieval of due today items.", () => 
-  {
-    expect(all.length).toBe(3);
-    const supriya = dueToday();
-    console.log(supriya);
-    expect(supriya.length).toBe(1);
-  });
-
   test("retrieval of overdue items.", () => 
   {
     let varshini = [];
@@ -57,6 +49,14 @@ describe("Supriya the reason", () => {
     varshini = overdue();
     console.log(varshini);
     expect(varshini.length).toBe(1);
+  });
+  
+  test("retrieval of due today items.", () => 
+  {
+    expect(all.length).toBe(3);
+    const supriya = dueToday();
+    console.log(supriya);
+    expect(supriya.length).toBe(1);
   });
 
   test("retrieval of due later items.", () => 
