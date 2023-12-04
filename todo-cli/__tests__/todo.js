@@ -3,68 +3,67 @@ const todoList = require("../todo");
 
 const { add, markAsComplete, all, dueToday, dueLater, overdue } = todoList();
 
-describe("Supriya the reason", () => {
-  test("creating a new todo", () => 
-  {
+describe("Todo test suite", () => {
+  test("should add new todo", () => {
     expect(all.length).toBe(0);
-    const himakar = new Date();
-    const bhavana = new Date(himakar);
-    const ananya = new Date(himakar);
-    ananya.setDate(himakar.getDate() + 1);
-    bhavana.setDate(himakar.getDate() - 1);
+
+    const date = new Date();
+    const yd = new Date(date);
+    const td = new Date(date);
+
+    td.setDate(date.getDate() + 1);
+    yd.setDate(date.getDate() - 1);
 
     add({
-      title: "Himakar",
+      title: "Todo test",
       completed: false,
       dueDate: new Date().toLocaleDateString("en-CA"),
     });
 
     add({
-      title: "Bhavana",
+      title: "Todo test",
       completed: false,
-      dueDate: bhavana.toLocaleDateString("en-CA"),
+      dueDate: yd.toLocaleDateString("en-CA"),
     });
 
     add({
-      title: "Ananya",
+      title: "Todo test",
       completed: false,
-      dueDate: ananya.toLocaleDateString("en-CA"),
+      dueDate: td.toLocaleDateString("en-CA"),
     });
 
     expect(all.length).toBe(3);
   });
 
-  test("marking a todo as complete.", () => 
-  {
+  test("should mark a todo as complete", () => {
     expect(all[0].completed).toBe(false);
+
     markAsComplete(0);
-    console.log(all[0])
+
     expect(all[0].completed).toBe(true);
   });
 
-  test("retrieval of overdue items.", () => 
-  {
-    let varshini = [];
-    expect(varshini.length).toBe(0);
-    varshini = overdue();
-    console.log(varshini);
-    expect(varshini.length).toBe(1);
-  });
-  
-  test("retrieval of due today items.", () => 
-  {
+  test("should retrieve a todo as due today", () => {
     expect(all.length).toBe(3);
-    const supriya = dueToday();
-    console.log(supriya);
-    expect(supriya.length).toBe(1);
+
+    const k = dueToday();
+    console.log(k);
+    expect(k.length).toBe(1);
   });
 
-  test("retrieval of due later items.", () => 
-  {
-    let shivani = [];
-    expect(shivani.length).toBe(0);
-    shivani = dueLater();
-    console.log(shivani);
-    expect(shivani.length).toBe(1);
+  test("should retrieve a todo as overdue", () => {
+    let k = [];
+    expect(k.length).toBe(0);
+
+    k = overdue();
+    expect(k.length).toBe(1);
+  });
+
+  test("should retrieve a todo as due later", () => {
+    let k = [];
+    expect(k.length).toBe(0);
+
+    k = dueLater();
+    expect(k.length).toBe(1);
   });
 });
