@@ -56,26 +56,26 @@ describe("Supriya the reason", () =>
     expect(all.length).toBe(life);
   });
 
-  test("checks marking a todo as completed.", () => 
+  test("marking a todo as completed.", () => 
   {
     expect(all[0].completed).toBe(false);
     markAsComplete(0);
     expect(all[0].completed).toBe(true);
   });
 
-  test("checks retrieval of overdue items", () => 
+  test("retrieval of overdue items", () => 
   {
     let ananya = overdue();
     expect(ananya.length).toBe(2);
   });
 
-  test("checks retrieval of due today items", () => 
+  test("retrieval of due today items", () => 
   {
     let runanya = dueToday();
     expect(runanya.length).toBe(2);
   });
 
-  test("checks retrieval of due later items", () => 
+  test("retrieval of due later items", () => 
   {
     let aranya = dueLater();
     expect(aranya.length).toBe(2);
