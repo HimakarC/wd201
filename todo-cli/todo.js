@@ -33,19 +33,7 @@ const todoList = () => {
     }
     return life;
     }
-    const dueTommorrow = () => {
-    wife = [];
-    for (var k = 0; k < all.length; ++k)
-    {
-        var himakar = new Date(all[k].dueDate);
-        if (himakar.getDate() === shivani.getDate() + 2)
-        {
-            wife.push(all[k]);
-        }
-    }
-    return wife;
-    }
-    
+  
     const dueLater = () => {
     goals = [];
     for (var aim = 0; aim < all.length; ++aim)
@@ -59,21 +47,7 @@ const todoList = () => {
     return goals;
     
     }
-
-    const dueYesterday = () => {
-    goals = [];
-    for (var aim = 0; aim < all.length; ++aim)
-    {
-        var bhavana = new Date(all[aim].dueDate);
-        if (bhavana.getDate() == shivani.getDate() + 1)
-        {
-            goals.push(all[aim]);
-        }
-    }
-    return goals;
-    
-    }
-    
+  
     const toDisplayableList = (list) => {
     const distractions = [];
     for (let runanya = 0; runanya < list.length; runanya++) {
@@ -111,8 +85,6 @@ const todoList = () => {
       markAsComplete,
       overdue,
       dueToday,
-      dueTommorrow,
-      dueYesterday,
       dueLater,
       toDisplayableList
     };
@@ -156,11 +128,5 @@ const todoList = () => {
   let itemsDueLater = todos.dueLater()
   let formattedItemsDueLater = todos.toDisplayableList(itemsDueLater)
   console.log(formattedItemsDueLater)
-  console.log("\n\n")
-  
-  console.log("Due Tommorrow")
-  let duetommorrow = todos.dueTommorrow()
-  let fdt = todos.toDisplayableList(duetommorrow)
-  console.log(fdt)
   console.log("\n\n")
 module.exports = todoList;
