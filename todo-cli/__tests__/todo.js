@@ -1,83 +1,68 @@
+/* eslint-disable no-undef */
 const todoList = require("../todo");
-const { all, add, markAsComplete, overdue, dueToday, dueLater } = todoList();
-describe("Supriya the reason", () =>
-{
-  beforeAll(() => {
-    let himakar = new Date();
-    add(
-    {
-      titile: "Himakar",
-      completed: false,
-      dueDate: new Date(new Date().setDate(himakar.getDate() + 1))
-        .toISOString()
-        .slice(0, 10),
-    });
-    add(
-    {
-      titile: "Bhavana",
-      completed: false,
-      dueDate: new Date(new Date().setDate(himakar.getDate() + 1))
-        .toISOString()
-        .slice(0, 10),
-    });
-    add(
-    {
-      titile: "Ananya",
-      completed: false,
-      dueDate: new Date().toISOString().slice(0, 10),
-    });
-    add(
-    {
-      titile: "Shivani",
-      completed: false,
-      dueDate: new Date(new Date().setDate(himakar.getDate() - 1))
-        .toISOString()
-        .slice(0, 10),
-    });
-    add(
-    {
-      titile: "Varshini",
-      completed: false,
-      dueDate: new Date(new Date().setDate(himakar.getDate() - 1))
-        .toISOString()
-        .slice(0, 10),
-    });
-  });
-  test("creating a new todo.", () => 
+
+const { add, markAsComplete, all, dueToday, dueLater, overdue } = todoList();
+
+describe("Supriya the reason", () => {
+  test("creating a new todo", () => 
   {
-    let life = all.length;
-    add(
-    {
-      titile: "Rishitha",
+    expect(all.length).toBe(0);
+    const himakar = new Date();
+    const bhavana = new Date(himakar);
+    const ananya = new Date(himakar);
+    ananya.setDate(himakar.getDate() + 1);
+    bhavana.setDate(himakar.getDate() - 1);
+
+    add({
+      title: "Himakar",
       completed: false,
-      dueDate: new Date().toISOString().slice(0, 10),
+      dueDate: new Date().toLocaleDateString("en-CA"),
     });
-    life += 1;
-    expect(all.length).toBe(life);
+
+    add({
+      title: "Bhavana",
+      completed: false,
+      dueDate: bhavana.toLocaleDateString("en-CA"),
+    });
+
+    add({
+      title: "Ananya",
+      completed: false,
+      dueDate: ananya.toLocaleDateString("en-CA"),
+    });
+
+    expect(all.length).toBe(3);
   });
 
-  test("marking a todo as completed.", () => 
+  test("marking a todo as complete.", () => 
   {
     expect(all[0].completed).toBe(false);
-    markAsComplete(0);
-    expect(all[0].completed).toBe(true);
-  });
 
-  test("retrieval of overdue items.", () => 
-  {
-    let ananya = overdue();
-    expect(ananya.length).toBe(2);
+    markAsComplete(0);
+
+    expect(all[0].completed).toBe(true);
   });
 
   test("retrieval of due today items.", () => 
   {
-    let runanya = dueToday();
-    expect(runanya.length).toBe(2);
+    expect(all.length).toBe(3);
+    const supriya = dueToday();
+    expect(supriya.length).toBe(1);
+  });
+
+  test("retrieval of overdue items.", () => 
+  {
+    let varshini = [];
+    expect(varshini.length).toBe(0);
+    varshini = overdue();
+    expect(varshini.length).toBe(1);
   });
 
   test("retrieval of due later items.", () => 
   {
-    let aranya = dueLater();
-    expect(aranya.length).toBe(2);
+    let shivani = [];
+    expect(shivani.length).toBe(0);
+    shivani = dueLater();
+    expect(shivani.length).toBe(1);
   });
 });
