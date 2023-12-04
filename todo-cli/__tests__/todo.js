@@ -37,9 +37,8 @@ describe("Supriya the reason", () => {
   test("marking a todo as complete.", () => 
   {
     expect(all[0].completed).toBe(false);
-
     markAsComplete(0);
-
+    console.log(all[0])
     expect(all[0].completed).toBe(true);
   });
 
@@ -56,6 +55,7 @@ describe("Supriya the reason", () => {
     let varshini = [];
     expect(varshini.length).toBe(0);
     varshini = overdue();
+    console.log(varshini);
     expect(varshini.length).toBe(1);
   });
 
@@ -64,6 +64,7 @@ describe("Supriya the reason", () => {
     let shivani = [];
     expect(shivani.length).toBe(0);
     shivani = dueLater();
+    console.log(shivani);
     expect(shivani.length).toBe(1);
   });
 });
