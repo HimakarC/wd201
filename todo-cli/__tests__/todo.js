@@ -1,11 +1,11 @@
 const todoList = require("../todo");
-
 const { all, add, markAsComplete, overdue, dueToday, dueLater } = todoList();
-
-describe("Supriya the reason", () => {
+describe("Supriya the reason", () =>
+{
   beforeAll(() => {
     let himakar = new Date();
-    add({
+    add(
+    {
       titile: "Himakar",
       completed: false,
       dueDate: new Date(new Date().setDate(himakar.getDate() + 1))
@@ -43,7 +43,8 @@ describe("Supriya the reason", () => {
         .slice(0, 10),
     });
   });
-  test("creating a new todo", () => {
+  test("creating a new todo", () => 
+  {
     let life = all.length;
     add(
     {
@@ -55,24 +56,28 @@ describe("Supriya the reason", () => {
     expect(all.length).toBe(life);
   });
 
-  test("checks marking a todo as completed.", () => {
+  test("checks marking a todo as completed.", () => 
+  {
     expect(all[0].completed).toBe(false);
     markAsComplete(0);
     expect(all[0].completed).toBe(true);
   });
 
-  test("checks retrieval of overdue items", () => {
-    const ananya = overdue();
+  test("checks retrieval of overdue items", () => 
+  {
+    let ananya = overdue();
     expect(ananya.length).toBe(2);
   });
 
-  test("checks retrieval of due today items", () => {
-    const runanya = dueToday();
+  test("checks retrieval of due today items", () => 
+  {
+    let runanya = dueToday();
     expect(runanya.length).toBe(2);
   });
 
-  test("checks retrieval of due later items", () => {
-    const aranya = dueLater();
+  test("checks retrieval of due later items", () => 
+  {
+    let aranya = dueLater();
     expect(aranya.length).toBe(2);
   });
 });
