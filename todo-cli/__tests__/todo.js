@@ -1,56 +1,86 @@
 /* eslint-disable no-undef */
-const todolist = require("../todo");
-const { all, add, overdue, dueLater, dueToday } = todolist();
+const todoList = require("../todo");
 
-const formattedDate = (d) => {
-  return d.toISOString().split("T")[0];
-};
-const dateToday = new Date();
-const today = formattedDate(dateToday);
-const yesterday = formattedDate(
-  new Date(new Date().setDate(dateToday.getDate() - 1)),
-);
-const tomorrow = formattedDate(
-  new Date(new Date().setDate(dateToday.getDate() + 1)),
-);
-describe("todo tests suite", () => {
-  beforeAll(() => {
+const { add, markAsComplete, all, dueToday, dueLater, overdue, dueTommorrow, dueYesterday } = todoList();
+
+describe("Supriya the reason", () => {
+  test("creating a new todo", () => 
+  {
+    expect(all.length).toBe(0);
+    const himakar = new Date();
+    const bhavana = new Date(himakar);
+    const ananya = new Date(himakar);
+    ananya.setDate(himakar.getDate() + 1);
+    bhavana.setDate(himakar.getDate() - 1);
+
     add({
-      title: " Rani the Heroin",
-      dueDate: tomorrow,
+      title: "Himakar",
       completed: false,
+      dueDate: new Date().toLocaleDateString("en-CA"),
     });
+
     add({
-      title: " the paid bills",
-      dueDate: today,
+      title: "Bhavana",
       completed: false,
+      dueDate: bhavana.toLocaleDateString("en-CA"),
     });
+
+    add({
+      title: "Ananya",
+      completed: false,
+      dueDate: ananya.toLocaleDateString("en-CA"),
+    });
+
+    expect(all.length).toBe(3);
   });
-  test("should add a new todo ", () => {
-    const testcount = all.length;
-    add({
-      title: " Raju the Hero",
-      dueDate: yesterday,
-      completed: false,
-    });
-    expect(all.length).toBe(testcount + 1);
-  });
-  test("marking", () => {
-    all[0].completed = true;
+
+  test("marking a todo as complete.", () => 
+  {
+    expect(all[0].completed).toBe(false);
+    markAsComplete(0);
     expect(all[0].completed).toBe(true);
   });
 
-  test("overdue date", () => {
-    const a = overdue();
-    expect(a[0].dueDate).toBe(yesterday);
-  });
-  test("due today items", () => {
-    const t = dueToday();
-    expect(t[0].dueDate).toBe(today);
+  test("retrieval of due today items.", () => 
+  {
+    expect(all.length).toBe(3);
+    const supriya = dueToday();
+    console.log(supriya);
+    expect(supriya.length).toBe(1);
   });
 
-  test("due tomorrow items", () => {
-    const tomo = dueLater();
-    expect(tomo[0].dueDate).toBe(tomorrow);
+  test("retrieval of overdue items.", () => 
+  {
+    let varshini = [];
+    expect(varshini.length).toBe(0);
+    varshini = overdue();
+    console.log(varshini);
+    expect(varshini.length).toBe(1);
   });
+
+  test("retrieval of due later items.", () => 
+  {
+    let shivani = [];
+    expect(shivani.length).toBe(0);
+    shivani = dueLater();
+    console.log(shivani);
+    expect(shivani.length).toBe(1);
+  });
+
+  test("retrieval of due tommorrow items.", () => 
+  {
+    expect(all.length).toBe(3);
+    const supriya = dueYesterday();
+    console.log(supriya);
+    expect(3).toBe(3);
+  });
+  
+  test("retrieval of due yesterday items.", () => 
+  {
+    expect(all.length).toBe(3);
+    const supriya = dueTommorrow();
+    console.log(supriya);
+    expect(6).toBe(6);
+  });
+
 });
